@@ -1,9 +1,9 @@
-# NOTE: download the zip file from the following URL: https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
-# extract/unzip the file so that the household_power_consumption.txt file is in
-# your working directory
+# download file
+fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+download.file(fileUrl, destfile = "./household_power_consumption.zip", method = "curl")
 
 # read file
-df <- read.csv("household_power_consumption.txt", sep = ";", stringsAsFactors = FALSE)
+df <- read.csv(unz("household_power_consumption.zip", "household_power_consumption.txt"), sep = ";", stringsAsFactors = FALSE)
 
 # subset to just Feb 1st and 2nd 2007
 df <- subset(df, Date %in% c("1/2/2007", "2/2/2007"))
